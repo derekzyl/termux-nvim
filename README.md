@@ -85,7 +85,7 @@ git clone https://github.com/derekzyl/nvim.git
 ### Termux Setup
 At this point it is assumed that termux is installed, and the shell script is dowmloaded and its in your downloads folder.
 to learn more abour terminal commands check the terminal commands section [here](#terminal-commands)
-- first we setup storage copy this command: `termux-setup-storage` then paste it in termux and hit the enter keyboard
+- first we setup storage copy this command: `termux-setup-storage` then paste it in termux and hit the enter key
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
 - thirdly navigate to the downloaded file path in termux; if your file folder default location is downloads, use this commands: just copy and paste in termux `cd && cd storage/downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
