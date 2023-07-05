@@ -91,7 +91,7 @@ to learn more abour terminal commands check the terminal commands section [here]
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
 - thirdly navigate to the downloaded file path in termux; if your file folder default location is downloads, use this commands: just copy and paste in termux `cd && cd storage/downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
-- run this command the moment you are in the nvim.sh directory: where you downloaded tge files to `sh nvim.sh`
+- run this command the moment you are in the nvim.sh directory: where you downloaded tge files to `sh nv.sh`
 - disclaimer: termux has just few file directory it can access in your storage folder they are:
   - dcim
   - downloads
