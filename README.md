@@ -34,33 +34,36 @@ install the following packages from F-droid
 
 ### Download setup script
  the setup script contains all the commands that you would need to setup termux, install common language servers and download neovim and setup neovim 
- - [use this link to download the shell script](https://drive.google.com/file/d/1Cknn7_lXDKycNNfVIXo8F4zbGGfGUMPn/view?usp=drivesdk)
+ - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
  a peak at the shell script is shown below
 
   ```bash
 #!/bin/sh
 # welcome to shell script for termux startup and neovim setup
-#  1 lets start with termux
+# 1 lets start with termux
 # ------------------------
-#  TERMUX
+# TERMUX
 #------------------------
 
 echo "TERMUX STARTUP"
 
+termux-setup-storage
+
+termux-change-repo
+
 pkg update -y
 pkg upgrade
 
-termux-setup-storage
-
 echo "installing packages and dependencies"
-echo -e "nodejs python neovim git python2 python2-dev python3 \n perl bash nano curl openssl openssh wget clang help nmap w3m \n hydra ruby macchanger dnsutils coreut "
-package = "nodejs python neovim git python2 python2-dev python3 perl bash nano curl openssl openssh wget clang help nmap w3m hydra ruby macchanger dnsutils coreut "
+packages="python neovim nodejs git curl openssl openssh wget openjdk-11-jdk ruby php golang rustc build-essential clang vim tmux sqlite wget curl httpie tree jq ffmpeg imagemagick neofetch"
+for package in $packages; do
+  echo "$package installed"
+  pkg install $package -y
+done
 
-pkg install -y $package
-
-#  2 lets start with neovim
+# 2 lets start with neovim
 # ------------------------
-#  NEOVIM
+# NEOVIM
 #------------------------
 
 echo "NEOVIM STARTUP"
@@ -70,16 +73,15 @@ cd
 foldername=".config"
 
 if [ -d "$foldername" ]; then
-    echo "moving to .config folder"
-    cd .config
-
+  echo "moving to .config folder"
+  cd .config
 else
-    echo "creating .config and changing directory to .config"
-    mkdir $foldername && cd $foldername
-
+  echo "creating .config and changing directory to .config"
+  mkdir $foldername && cd $foldername
 fi
 
 git clone https://github.com/derekzyl/nvim.git
+
 
   ```
 ### Termux Setup
