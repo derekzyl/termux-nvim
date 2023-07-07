@@ -33,14 +33,14 @@ install the following packages from F-droid
 - Termux:Styling- to stylise termux
 
 ### Download setup script
- the setup script contains all the commands that you would need to setup termux, install common language servers and download neovim and setup neovim 
+ the setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim 
  - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
  a peak at the shell script is shown below
 
   ```bash
 #!/bin/sh
-# welcome to shell script for termux startup and neovim setup
-# 1 lets start with termux
+# Welcome to shell script for Termux startup and Neovim setup
+# 1 let's start with Termux
 # ------------------------
 # TERMUX
 #------------------------
@@ -51,7 +51,7 @@ termux-setup-storage
 
 termux-change-repo
 
-echo "updating and upgrading termux \n"
+echo "updating and upgrading Termux \n"
 pkg update -y
 pkg upgrade
 
@@ -82,22 +82,22 @@ else
   mkdir $foldername && cd $foldername
 fi
 
-echo "would you want to make neovim your default code editor in termux? [Y|y|N|n] "
+echo "Would you want to make Neovim your default code editor in Termux? [Y|y|N|n] "
 
 read user_input
 
 if [$user_input == "y" || $user_input =="Y"]; then
   ln -s /data/data/com.termux/files/usr/bin/nvim ~/bin/termux-file-editor
-  echo "you have made neovim your code editor"
+  echo "You have made Neovim your code editor"
 else
   echo ""
 fi
 
 mkdir ~/bin
-echo "cloning the git repository for neovim plugin setup"
+echo "cloning the git repository for Neovim plugins and setups setup"
 git clone https://github.com/derekzyl/nvim.git
 
-echo "would you want to add beautifications to your termux file like custom name and extra shortcuts? \n [Y|y|N|n] "
+echo "Would you want to add beautifications to your Termux file like custom name and extra shortcuts? \n [Y|y|N|n] "
 
 read user_in
 
@@ -110,42 +110,42 @@ if [$user_in == "y" || $user_in =="Y"]; then
 else
   echo ""
 fi
-echo "happy hacking!!! 😊😊⚡⚡⚡😎😎"
+echo "Happy hacking!!! 😊😊⚡⚡⚡😎😎"
 
 
 
   ```
 ### Termux Setup
-At this point it is assumed that termux is installed, and the shell script is dowmloaded and its in your downloads folder.
-to learn more abour terminal commands check the terminal commands section [here](#terminal-commands)
-- first we setup storage copy this command: `termux-setup-storage` then paste it in termux and hit the enter key
+At this point, it is assumed that termux is installed, and the shell script is downloaded and it's in your downloads folder.
+to learn more about terminal commands check the terminal commands section [here](#terminal-commands)
+- first we setup storage copy this command: `termux-setup-storage` then paste it into Termux and hit the enter key
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
-- thirdly navigate to the downloaded file path in termux; if your file folder default location is downloads, use this commands: just copy and paste in termux `cd && cd storage/downloads`
+- thirdly navigate to the downloaded file path in Termux; if your file folder default location is downloads, use this commands: just copy and paste in Termux `cd && cd downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
-- run this command the moment you are in the nvim.sh directory: where you downloaded tge files to `sh nv.sh`
-- disclaimer: termux has just few file directory it can access in your storage folder they are:
+- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `sh nv.sh`
+- disclaimer: termux has just a few file directories it can access in your storage folder they are:
   - dcim
   - downloads
   - movies
   - music
   - pictures
   - shared
-when you see the installation finished message we will then move to neovim
+when you see the installation finished message we will then move to Neovim
 
 
 ### Neovim Setup
-Neovim is a highly extensible text editor, based on the popular Vim editor. It was developed as a modernized and more maintainable version of Vim, with a focus on improved performance, extensibility, and compatibility.
-in termux to enter into Neovim environment type
-`nvim` and you are in neovim below are guided instructions 
+Neovim is a highly extensible text editor, based on the popular Vim editor. It was developed as a modernized and more maintainable version of Vim, focusing on improved performance, extensibility, and compatibility.
+in Termux to enter into the Neovim environment type
+`nvim` and you are in Neovim below are guided instructions 
 - run `nvim` in termux to open neovim
-- for the first time in nvim write pay attention to the colon before the commands
+- for the first time in **Neovim** try to pay attention to the colon before the commands
 - `:PackerInstall` wait for it to execute click here to get more [info](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/wbthomason/packer.nvim&ved=2ahUKEwieida38fX_AhWzRkEAHbspAbkQFnoECBAQAQ&usg=AOvVaw25T6jdrrqjja05kt128cu7) 
 - run `:PackerSync`
 - run `:Mason` more [info](https://github.com/williamboman/mason.nvim)
-- install markdown markdown-parser in the mason and any languge server or anything you need  there
+- install markdown markdown-parser in the Mason and any language server or anything you need  there
 
-- kindly type `cd && cd .config/nvim && nvim` this will take you to the neovim plugin Setup
-- by now nerd tree is installed so `n`command will work in **Normal** mode to open and close drawers navigate to the `plugins.lua` file and make research on the installed plugins
+- kindly type `cd && cd .config/nvim && nvim` this will take you to the Neovim plugin Setup
+- by now nerd tree is installed so `n` command will work in **Normal** mode to open and close drawers navigate to the `plugins.lua` file and make research about the installed plugins
 
 ### Nvim commands
 these are a few commands check **VIM** or **NEOVIM** documentation for more information
@@ -168,8 +168,8 @@ these are a few commands check **VIM** or **NEOVIM** documentation for more info
 - `Ctrl + F`: Scroll one page down.
 - `Ctrl + E`: Scroll one line down.
 - `Ctrl + Y`: Scroll one line up.
-- `Ctrl + O`: Jump back to previous location.
-- `Ctrl + I`: Jump forward to next location.
+- `Ctrl + O`: Jump back to the previous location.
+- `Ctrl + I`: Jump forward to the next location.
 
 #### Editing
 
@@ -252,5 +252,5 @@ These are just a few examples of the many commands available in Neovim. You can 
 
 
 ### Other Settings
-below are some set ups to help beautify your termux
-- T header follow link [here](https://github.com/remo7777/T-Header)
+below are some setups to help beautify your termux
+- T header follow the link [here](https://github.com/remo7777/T-Header) but this is covered as an option to opt-in for in the script
