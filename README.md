@@ -51,14 +51,16 @@ termux-setup-storage
 
 termux-change-repo
 
+echo "updating and upgrading termux \n"
 pkg update -y
 pkg upgrade
 
-echo "installing packages and dependencies"
+echo "------------------------------------------------------ \n ------------------------------------------ \n installing packages and dependencies \n"
+echo "----------------------------- \n python neovim nodejs git curl openssl openssh  wget openjdk-11-jdk ruby  php golang rustc build-essential clang vim tmux sqlite wget curl httpie tree jq ffmpeg imagemagick neofetch \n will be installed"
 packages="python neovim nodejs git curl openssl openssh wget openjdk-11-jdk ruby php golang rustc build-essential clang vim tmux sqlite wget curl httpie tree jq ffmpeg imagemagick neofetch"
 for package in $packages; do
-  echo "$package installed"
   pkg install $package -y
+  echo "$package installed"
 done
 
 # 2 lets start with neovim
@@ -80,7 +82,36 @@ else
   mkdir $foldername && cd $foldername
 fi
 
+echo "would you want to make neovim your default code editor in termux? [Y|y|N|n] "
+
+read user_input
+
+if [$user_input == "y" || $user_input =="Y"]; then
+  ln -s /data/data/com.termux/files/usr/bin/nvim ~/bin/termux-file-editor
+  echo "you have made neovim your code editor"
+else
+  echo ""
+fi
+
+mkdir ~/bin
+echo "cloning the git repository for neovim plugin setup"
 git clone https://github.com/derekzyl/nvim.git
+
+echo "would you want to add beautifications to your termux file like custom name and extra shortcuts? \n [Y|y|N|n] "
+
+read user_in
+
+if [$user_in == "y" || $user_in =="Y"]; then
+  cd
+  git clone https://github.com/remo7777/T-Header.git
+  cd T-Header/
+  bash t-header.sh
+  echo "successfully beatified termux and some nice looks \n ----------------------------------- \n to remove the banner and custom name use this: \n cd ~/T-header && bash t-header.sh --remove && exit"
+else
+  echo ""
+fi
+echo "happy hacking!!! 😊😊⚡⚡⚡😎😎"
+
 
 
   ```
