@@ -31,7 +31,7 @@ echo "Installing packages and dependencies"
 echo "-----------------------------"
 
 # List of packages to install
-packages="python neovim nodejs git curl openssl openssh wget gh ruby php golang rust build-essential clang vim tmux sqlite wget curl imagemagick neofetch"
+packages="python neovim nodejs git curl openssl openssh wget gh build-essential  tmux  wget curl "
 
 for package in $packages; do
     install_package "$package"
@@ -39,6 +39,14 @@ done
 
 # Neovim Setup
 echo "NEOVIM STARTUP"
+
+echo "installing neovim dependencies \n"
+
+echo "install pyright globaly \n"
+
+npm install -g pyright
+npm install -g typescript typescript-language-server
+
 if [ ! -d ~/.local/share/nvim/site/pack/packer/start/packer.nvim ]; then
     git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim || { echo "Error cloning Neovim"; exit 1; }
 else
@@ -56,6 +64,8 @@ else
     echo "Creating .config and changing directory to .config"
     mkdir "$foldername" && cd "$foldername" || { echo "Error creating .config"; exit 1; }
 fi
+
+
 
 nvim_dir="nvim"
 
@@ -77,6 +87,11 @@ else
         echo "Exiting 'nvim' plugin cloning."
     fi
 fi
+nvim_config_folder="~/.config/nvim/pack/nvim/start/nvim-lspconfig"
+
+if [! -d "$nvim_config_folder" ]; then
+  git clone https://github.com/neovim/nvim-lspconfig ~/.config/nvim/pack/nvim/start/nvim-lspconfig
+fi    
 
 echo "Would you want to make Neovim your default code editor in Termux? [Y|y|N|n]"
 

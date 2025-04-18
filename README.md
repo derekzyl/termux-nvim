@@ -144,6 +144,7 @@ to learn more about terminal commands check the terminal commands section [here]
 - thirdly navigate to the downloaded file path in Termux; if your file folder default location is downloads, use this commands: just copy and paste in Termux `cd && cd downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
 - run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `bash nv.sh`
+- if you run into an error when running thr script run this command `dos2unix nv.sh` then run `bash nv.sh`
 - disclaimer: termux has just a few file directories it can access in your storage folder they are:
   - dcim
   - downloads
