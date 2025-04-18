@@ -1,6 +1,7 @@
 # TERMUX AND NEOVIM
 
 ## Table Of Content
+
 - [Introduction](#introduction)
 - [Installations](#installations)
   - [F-Droid](#fdroid)
@@ -13,28 +14,37 @@
 - [Other settings](#other-settings)
 
 ## Introduction
+
 Termux is a powerful terminal emulator and Linux environment app for Android devices. It allows you to access a full-featured command-line interface on your smartphone or tablet, enabling you to run various Linux tools and utilities. Neovim, on the other hand, is an enhanced version of the popular Vim text editor, providing additional features and improvements.
 
 Setting up Neovim within Termux provides a versatile and efficient text editing environment on your Android device. Here's a short guide to help you get started with
 
 ## Installations
+
 The files that you will need to download on your device are:
+
 ### Fdroid
+
 F-Droid is an alternative app store for Android devices that focuses on providing free and open-source software (FOSS) applications. It is a community-driven platform that offers a wide range of apps that respect user privacy, promote transparency, and adhere to open-source principles. F-Droid provides a decentralized and trustworthy source for downloading apps without relying on proprietary app stores.
+
 - [click on this link to download F-Droid](https://f-droid.org/F-Droid.apk)
 download and install the file on your Android devices
 
 ### Termux Installation
+
 Termux is an Android application that provides a full-fledged Linux terminal emulator environment on your Android device.
-when FDroid is installed, 
+when FDroid is installed,
 install the following packages from F-droid
-- Termux:API 
-- Unexpected keyboard -optional but best for code writing 
+
+- Termux:API
+- Unexpected keyboard -optional but best for code writing
 - Termux:Styling- to stylise termux
 
 ### Download setup script
- the setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim 
- - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
+
+ the setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim
+
+- [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
  a peak at the shell script is shown below
 
   ```bash
@@ -115,14 +125,17 @@ echo "Happy hacking!!! 😊😊⚡⚡⚡😎😎"
 
 
   ```
+
 ### Termux Setup
+
 At this point, it is assumed that termux is installed, and the shell script is downloaded and it's in your downloads folder.
 to learn more about terminal commands check the terminal commands section [here](#terminal-commands)
+
 - first we setup storage copy this command: `termux-setup-storage` then paste it into Termux and hit the enter key
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
 - thirdly navigate to the downloaded file path in Termux; if your file folder default location is downloads, use this commands: just copy and paste in Termux `cd && cd downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
-- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `sh nv.sh`
+- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `bash nv.sh`
 - disclaimer: termux has just a few file directories it can access in your storage folder they are:
   - dcim
   - downloads
@@ -132,14 +145,15 @@ to learn more about terminal commands check the terminal commands section [here]
   - shared
 when you see the installation finished message we will then move to Neovim
 
-
 ### Neovim Setup
+
 Neovim is a highly extensible text editor, based on the popular Vim editor. It was developed as a modernized and more maintainable version of Vim, focusing on improved performance, extensibility, and compatibility.
 in Termux to enter into the Neovim environment type
-`nvim` and you are in Neovim below are guided instructions 
+`nvim` and you are in Neovim below are guided instructions
+
 - run `nvim` in termux to open neovim
 - for the first time in **Neovim** try to pay attention to the colon before the commands
-- `:PackerInstall` wait for it to execute click here to get more [info](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/wbthomason/packer.nvim&ved=2ahUKEwieida38fX_AhWzRkEAHbspAbkQFnoECBAQAQ&usg=AOvVaw25T6jdrrqjja05kt128cu7) 
+- `:PackerInstall` wait for it to execute click here to get more [info](https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://github.com/wbthomason/packer.nvim&ved=2ahUKEwieida38fX_AhWzRkEAHbspAbkQFnoECBAQAQ&usg=AOvVaw25T6jdrrqjja05kt128cu7)
 - run `:PackerSync`
 - run `:Mason` more [info](https://github.com/williamboman/mason.nvim)
 - install markdown markdown-parser in the Mason and any language server or anything you need  there
@@ -148,10 +162,13 @@ in Termux to enter into the Neovim environment type
 - by now nerd tree is installed so `n` command will work in **Normal** mode to open and close drawers navigate to the `plugins.lua` file and make research about the installed plugins
 
 ### Nvim commands
+
 these are a few commands check **VIM** or **NEOVIM** documentation for more information
+
 #### general information
+
 - in Normal mode is where you run your commands and the quickest path to normal mode is `esc` button
-  - `:w` write/save 
+  - `:w` write/save
   - `i` insert mode: to write text or code
   - `esc` to go back to normal mode
   - `q` quit
@@ -249,8 +266,8 @@ These are just a few examples of the many commands available in Neovim. You can 
 15. **ping**: Sends network packets to a specific IP address to check connectivity.
     Example: `ping google.com` (sends packets to google.com to check network connectivity)
 
-
-
 ### Other Settings
+
 below are some setups to help beautify your termux
+
 - T header follow the link [here](https://github.com/remo7777/T-Header) but this is covered as an option to opt-in for in the script
