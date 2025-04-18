@@ -45,15 +45,22 @@ install the following packages from F-droid
  the setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim
 
 - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
+- [or more advanced installation](https://drive.google.com/file/d/13-Ik8qVEcYwGVPyvQqx1f4EUeGccjoxT/view?usp=drive_link)
  a peak at the shell script is shown below
 
   ```bash
-#!/bin/sh
+
+# !/bin/sh
+
 # Welcome to shell script for Termux startup and Neovim setup
+
 # 1 let's start with Termux
+
 # ------------------------
+
 # TERMUX
-#------------------------
+
+# ------------------------
 
 echo "TERMUX STARTUP"
 
@@ -74,12 +81,15 @@ for package in $packages; do
 done
 
 # 2 lets start with neovim
+
 # ------------------------
+
 # NEOVIM
-#------------------------
+
+# ------------------------
 
 echo "NEOVIM STARTUP"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+git clone --depth 1 <https://github.com/wbthomason/packer.nvim> ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 cd
 
 foldername=".config"
@@ -105,7 +115,7 @@ fi
 
 mkdir ~/bin
 echo "cloning the git repository for Neovim plugins and setups setup"
-git clone https://github.com/derekzyl/nvim.git
+git clone <https://github.com/derekzyl/nvim.git>
 
 echo "Would you want to add beautifications to your Termux file like custom name and extra shortcuts? \n [Y|y|N|n] "
 
@@ -113,7 +123,7 @@ read user_in
 
 if [$user_in == "y" || $user_in =="Y"]; then
   cd
-  git clone https://github.com/remo7777/T-Header.git
+  git clone <https://github.com/remo7777/T-Header.git>
   cd T-Header/
   bash t-header.sh
   echo "successfully beatified termux and some nice looks \n ----------------------------------- \n to remove the banner and custom name use this: \n cd ~/T-header && bash t-header.sh --remove && exit"
@@ -121,8 +131,6 @@ else
   echo ""
 fi
 echo "Happy hacking!!! 😊😊⚡⚡⚡😎😎"
-
-
 
   ```
 
