@@ -33,88 +33,100 @@ install the following packages from F-droid
 - Termux:Styling- to stylise termux
 
 ### Download setup script
- the setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim 
- - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)
- a peak at the shell script is shown below
+ 
+ The setup script contains all the commands that you would need to setup Termux, install common language servers and download Neovim and setup Neovim 
+ * **`Disclaimer`**: Before downloading the script open termux for the first time, it will run and make some first time setup, you can keep it open.
+
+ - [use this link to download the shell script](https://drive.google.com/file/d/1mGu6xzJUPi4VaKBi-8IseojU_AvW8HdT/view?usp=drive_link)  , you would be given an option to open with termux and if you do so it makes things easy as termux will automatically download the script and save it in downloads directory.
+
+
+ - [the full shell script](./src/nv.sh) click the  link to have a preview on what you are downloading
+
+ - a peak at the shell script is shown below 
+
 
   ```bash
 #!/bin/sh
-# Welcome to shell script for Termux startup and Neovim setup
-# 1 let's start with Termux
-# ------------------------
-# TERMUX
-#------------------------
+main() {
+    echo -e "${MAGENTA}╔════════════════════════════════════════════╗${NC}"
+    echo -e "${MAGENTA}║  ENHANCED TERMUX DEVELOPMENT ENVIRONMENT   ║${NC}"
+    echo -e "${MAGENTA}╚════════════════════════════════════════════╝${NC}"
+    echo
+    echo -e "${BLUE}This script will set up an optimal development environment in Termux.${NC}"
+    echo -e "${YELLOW}Note: It will install neovim setup.${NC}"
+    echo
+    
+    # Ask for confirmation
+    echo -e "${YELLOW}Continue with setup? [Y/n]${NC}"
+    read -p "> " continue_setup
+    
+    if [[ "$continue_setup" =~ ^[Nn]$ ]]; then
+        echo "Setup cancelled."
+        exit 0
+    fi
+    
+    # Create backup before making changes
+    create_backup
+    
+    # Perform all setup steps
+    setup_storage
+    change_repo
+    update_termux
+    
+    # Install core packages
+    core_packages=("python" "nodejs" "git" "neovim" "curl" "openssl" "openssh" "wget" "gh" "build-essential" "tmux")
+    install_packages "Core" "${core_packages[@]}"
+    
+    # Setup important components
+    setup_git_config
+    # setup_ssh_keys
+    setup_python_env
+    setup_shell_config
+    setup_tmux
+    setup_neovim_extras
+    # Install optional tools based on user selection
+    echo -e "\n${CYAN}═══ OPTIONAL COMPONENTS ═══${NC}"
+    echo "Select which additional components to install:"
+    echo "1) Terminal productivity tools (recommended)"
+    echo "2) Backup utility"
+    echo "3) Termux beautification"
+    echo "4) All of the above"
+    echo "5) None of the above"
+    read -p "> " optional_components
+    
+    case $optional_components in
+        1|4)
+            install_terminal_tools
+            ;;
+    esac
+    
+    
+    case $optional_components in
+    2|4)
+            setup_backup_utility
+            ;;
+    esac
+    
+    case $optional_components in
+        3|4)
+            install_termux_beauty
+            ;;
+    esac
+    
+    # Final maintenance and cleanup
+    cleanup_disk_space
+    create_help_file
+    create_update_alias
+    
+    # Print summary
+    print_summary
+}
 
-echo "TERMUX STARTUP"
-
-termux-setup-storage
-
-termux-change-repo
-
-echo "updating and upgrading Termux \n"
-pkg update -y
-pkg upgrade
-
-echo "------------------------------------------------------ \n ------------------------------------------ \n installing packages and dependencies \n"
-echo "----------------------------- \n python neovim nodejs git curl openssl openssh  wget openjdk-11-jdk ruby  php golang rustc build-essential clang vim tmux sqlite wget curl httpie tree jq ffmpeg imagemagick neofetch \n will be installed"
-packages="python neovim nodejs git curl openssl openssh wget openjdk-11-jdk ruby php golang rustc build-essential clang vim tmux sqlite wget curl httpie tree jq ffmpeg imagemagick neofetch"
-for package in $packages; do
-  pkg install $package -y
-  echo "$package installed"
-done
-
-# 2 lets start with neovim
-# ------------------------
-# NEOVIM
-#------------------------
-
-echo "NEOVIM STARTUP"
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-cd
-
-foldername=".config"
-
-if [ -d "$foldername" ]; then
-  echo "moving to .config folder"
-  cd .config
-else
-  echo "creating .config and changing directory to .config"
-  mkdir $foldername && cd $foldername
-fi
-
-echo "Would you want to make Neovim your default code editor in Termux? [Y|y|N|n] "
-
-read user_input
-
-if [$user_input == "y" || $user_input =="Y"]; then
-  ln -s /data/data/com.termux/files/usr/bin/nvim ~/bin/termux-file-editor
-  echo "You have made Neovim your code editor"
-else
-  echo ""
-fi
-
-mkdir ~/bin
-echo "cloning the git repository for Neovim plugins and setups setup"
-git clone https://github.com/derekzyl/nvim.git
-
-echo "Would you want to add beautifications to your Termux file like custom name and extra shortcuts? \n [Y|y|N|n] "
-
-read user_in
-
-if [$user_in == "y" || $user_in =="Y"]; then
-  cd
-  git clone https://github.com/remo7777/T-Header.git
-  cd T-Header/
-  bash t-header.sh
-  echo "successfully beatified termux and some nice looks \n ----------------------------------- \n to remove the banner and custom name use this: \n cd ~/T-header && bash t-header.sh --remove && exit"
-else
-  echo ""
-fi
-echo "Happy hacking!!! 😊😊⚡⚡⚡😎😎"
-
-
+# Run main function
+main
 
   ```
+
 ### Termux Setup
 At this point, it is assumed that termux is installed, and the shell script is downloaded and it's in your downloads folder.
 to learn more about terminal commands check the terminal commands section [here](#terminal-commands)
@@ -122,8 +134,10 @@ to learn more about terminal commands check the terminal commands section [here]
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
 - thirdly navigate to the downloaded file path in Termux; if your file folder default location is downloads, use this commands: just copy and paste in Termux `cd && cd downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
-- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `sh nv.sh`
-- disclaimer: termux has just a few file directories it can access in your storage folder they are:
+- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `bash nv.sh`
+- if you encountered any error run this command  `dos2unix nv.sh` first to convert the bash file to linux compactible
+- then run `bash nv.sh` again
+- disclaimer: termux has just a few file directories it can access in your storage folder they are; kindly note that these varies with phones:
   - dcim
   - downloads
   - movies
