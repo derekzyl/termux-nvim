@@ -146,8 +146,10 @@ to learn more about terminal commands check the terminal commands section [here]
 - second we navigate to the script downloaded from my drive [here](#download-setup-script)
 - thirdly navigate to the downloaded file path in Termux; if your file folder default location is downloads, use this commands: just copy and paste in Termux `cd && cd downloads`
 - for more reference on terminal commands check [here](#terminal-commands)
-- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `sh nv.sh`
-- disclaimer: termux has just a few file directories it can access in your storage folder they are:
+- run this command the moment you are in the `nv.sh` file location directory: where you downloaded the files to `bash nv.sh`
+- if you encountered an error running the script run this command `   dos2unix nv.sh` it converts windows bash script to linux bash script
+- afterwards run `bash nv.sh` again
+- disclaimer: termux has just a few file directories it can access in your storage folder they are; these folders varies with phones and brands:
   - dcim
   - downloads
   - movies
